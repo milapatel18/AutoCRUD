@@ -1,4 +1,3 @@
 # AutoCRUD
-Completely Dynamic AUTO CRUD Development with core concept of JDBC, JSP, Servlet.
-
-Design Patterns & Coding Hierarchy is most considerable with all above core technologies and implementation.
+Completely Dynamic AUTO CRUD Development with core concept of Spring Boot API, Database, ORM/JDBC, REST.
+Design Patterns : 
