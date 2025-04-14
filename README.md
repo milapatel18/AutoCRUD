@@ -14,3 +14,8 @@ Backend :
 - Use different packages for managing metadata services and connections
 - Use seamless API design for CRUD
 - Save Database details to the filesystem only
+
+Technology Stack : 
+- Spring Boot 3.*, Java 17.*, MySQL 8.*,
+- ReactJS 19.*
+- 
