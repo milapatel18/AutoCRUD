@@ -30,7 +30,38 @@ API Details
 3. Edit Databae Details
    - /api/v1/database/edit/{uniqueName}
    - PATCH Details of {uniqueName, dbName, dbServer, dbPort, dbUser, dbPassword, dbTitle}
-5. Delete Databae Details
+4. Delete Databae Details
    - /api/v1/database/delete/{uniqueName}
    - DELETE
+  
+5. Open database Details
+   - /api/v1/database/view/{uniqueName}
+   - GET  provides Details of {uniqueName, dbName, dbServer, dbPort, dbUser, dbPassword, dbTitle} with List of tables and their links
+   - Display all the tables in side panel 
+  
+6. Open table details from the side panel
+   - /api/v1/table/view/{uniqueName}/{tableName}
+   - GET list of table details and display with edit and Delete option for each raw
+   - show Create Record Option on top
+  
+7. Edit Table data option will open form in Model with simple form UI in onecolumn
+   - /api/v1/table/edit/{uniqueName}/{tableName}/{recordId)
+  
+8. Create Table data option will open form in Model with simple form UI in onecolumn
+   - /api/v1/table/create/{uniqueName}/{tableName}
+  
+9. Delete Table data option will open form in Model with simple form UI in onecolumn
+   - /api/v1/table/delete/{uniqueName}/{tableName}/{recordId)
+  
+
+
+
+UI Form Options and Validation
+- Text      Max Limit, Not Null
+- TextArea  Max Limit, Not Null
+- Number    Min Max Limit, Not Null
+- DropDown  Default first one is empty, Not Null, 
+- Date      Not Null
+- DateTime  Not Null
+
 
