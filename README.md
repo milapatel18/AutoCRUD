@@ -36,10 +36,14 @@ API Details
   
 5. Open database Details
    - /api/v1/database/view/{uniqueName}
+   - GET  provides Details of {uniqueName, dbName, dbServer, dbPort, dbUser, dbPassword, dbTitle}
+
+7. Open database Table Details
+   - /api/v1/database/tables/{uniqueName}
    - GET  provides Details of {uniqueName, dbName, dbServer, dbPort, dbUser, dbPassword, dbTitle} with List of tables and their links
-   - Display all the tables in side panel 
-  
-6. Open table details from the side panel
+   - Display all the tables in side panel
+
+7. Open table details from the side panel
    - /api/v1/table/view/{uniqueName}/{tableName}
    - GET list of table details and display with edit and Delete option for each raw
    - show Create Record Option on top
@@ -63,5 +67,24 @@ UI Form Options and Validation
 - DropDown  Default first one is empty, Not Null, 
 - Date      Not Null
 - DateTime  Not Null
+
+#MYSQL
+Important Database Queries for the Metadata
+- Fetch full details of the table
+SELECT * FROM information_schema.columns    
+WHERE (table_schema='DBNAME' and table_name = 'TABLENAME') 
+order by ordinal_position;
+- 
+SELECT * FROM information_schema.key_column_usage
+WHERE constraint_schema="DBNAME";
+select * from information_schema.key_column_usage where table_schema="springtodo";
+
+-- date time must be formatted to the DB relevant from UI request
+-- log everywhere
+-- db default for jwt, google, etc..
+
+
+
+
 
 
