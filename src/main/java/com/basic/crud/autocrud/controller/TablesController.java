@@ -42,6 +42,12 @@ public class TablesController {
         return tableService.getTableInfo(databaseUniqueName,tableName);
     }
 
+    @GetMapping("/form/{databaseUniqueName}/{tableName}")
+    public List<TableInfo> formDbTableDetails(@PathVariable("databaseUniqueName") String databaseUniqueName,
+                                              @PathVariable("tableName") String tableName){
+        return tableService.prepareFormDetails(databaseUniqueName,tableName);
+    }
+
     @PutMapping("/edit/{databaseUniqueName}/{tableName}")
     public boolean editDbTableDetails(@PathVariable("databaseUniqueName") String databaseUniqueName,
                                   @PathVariable("tableName") String tableName,

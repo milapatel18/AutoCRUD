@@ -13,6 +13,7 @@ import java.util.List;
 public class DBMetadata {
     private String dbName;
     private Date lastFetchTime;
+    private List<String> tableList;
     private List<TableInfo> tableInfo; // TableName and associated details for each column
     // #TODO Prepare an API in DatabaseController which sends details from the  in-memory object's
 }

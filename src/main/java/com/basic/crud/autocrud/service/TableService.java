@@ -14,6 +14,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class TableService {
@@ -90,6 +91,7 @@ public class TableService {
                     tableInfoList.add(tableInfo);
                 }
                 dbMetadata.setTableInfo(tableInfoList);
+                dbMetadata.setTableList(tableInfoList.stream().map(TableInfo::getTableName).collect(Collectors.toSet()).stream().toList());
             }
             ps.close();
             connectionMap.put(dbUniqueName,dbMetadata);
@@ -320,6 +322,21 @@ public class TableService {
                 .filter(obj -> obj.getTableName().equals(tableName))
                 .toList();
         return  tableInfoList;
+    }
+
+    public List<TableInfo> prepareFormDetails(String dbUniqueName, String tableName) {
+        List<TableInfo> tableInfoList = connectionMap.get(dbUniqueName).getTableInfo().stream()
+                .filter(obj -> obj.getTableName().equals(tableName))
+                .toList();
+        List<TableInfo> formElementList=new ArrayList<>();
+        for(TableInfo t:tableInfoList){
+            if(!t.getColumnName().equals("id")
+                    && !t.getColumnName().equals("created_at")
+                    && !t.getColumnName().equals("updated_at")){
+                formElementList.add(t);
+            }
+        }
+        return  formElementList;
     }
 
     public DBMetadata getMetaData(String dbUniqueName){
