@@ -261,16 +261,17 @@ public class TableService {
             if(t.getColumnName().equals("created_at")){
                 continue;
             }
+            if(!first){
+                setString = setString.concat(",");
+            }
+
             if(t.getColumnName().equals("updated_at")){
                 setString = setString.concat("updated_at=").concat("NOW()");
                 first = false;
                 continue;
             }
 
-            if(!first){
-                setString = setString.concat(",");
-                first = false;
-            }
+
             switch (t.getDataType()) { //#TODO this will be converted to the preparedStatement
                 case "varchar" -> setString = setString.concat(t.getColumnName()+"=").concat("'"+map.get(t.getColumnName()).toString()+"'");
                 case "text" -> setString = setString.concat(t.getColumnName()+"=").concat("'"+map.get(t.getColumnName()).toString()+"'");
@@ -282,6 +283,7 @@ public class TableService {
                 default -> {
                 }
             }
+            first = false;
         }
         String sql="UPDATE "+tableName+" SET "+setString+" WHERE id="+map.get("id").toString();
         System.out.println(" ---- ---- ---- "+sql);
